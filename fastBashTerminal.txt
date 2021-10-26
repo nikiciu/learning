@@ -1,0 +1,23 @@
+CTRL+a         Go to the beginning of the line (same as Home)
+CTRL+e         Go to the End of the line (same as End)
+ALT+b / ESC+b  Go one word back (to the left)
+ALT+f / ESC+f  Go one word forward (to the right)
+# Deleting parts of the line
+###############################################
+ CTRL+k     Cut the line after the cursor to the clipboard
+ CTRL+u     Cut/delete the line before the cursor to the clipboard
+ CTRL+Y 	p aste
+ ALT+Back	delete back a word
+ CTRE+_		undo
+###############################################
+### Run prev command as sudo:
+sudo !!
+###############################################
+REPLACE tail -f /var/blah.log ==> less +F /var/blah (Ctrl+C, Shift+F, q)
+###################################################
+Ctrl+x+e  =>send to editor the line from term
+###################################################
+ping 8.8.8.8
+mtr ALT+. ==> give me the argument of my last command (8.8.8.8)
+####################################
+id 

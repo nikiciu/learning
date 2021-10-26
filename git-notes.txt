@@ -1,0 +1,15 @@
+mkdir gitprj1
+cd gitprj1
+git init
+# Config files are created inside the directory gitprj1
+# Create the first_file.txt file to track
+# We made a change to our project. Let git track the change we just made.
+# Add all changes that are in the current directory "."
+git add .     # Prepare the commit.
+git commit -m "Initial commit."     # Do the permanent commit.
+# Inside the prj:
+git log   # return a log of all the commits made to this prj. with the newest entry at the top.
+git log -n 5
+git log --since=2021-01-02
+git log --author=nikiciu
+git log --grep="ni"   # Most usefull!

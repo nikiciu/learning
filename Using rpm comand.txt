@@ -1,0 +1,55 @@
+================== Using the rpm Command.mp4 =============================
+# yum install --downloadonly httpd
+=> /var/cache/dnf/appstream-a520ed22b0a8a736/packages/apr-1.6.3-11.el8.x86_64.rpm
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing:
+# dnf clean packages  => Removes any cached packages from the system(/var/cache/dnf/appstream/packages/)
+# rpm -qa => all installed packages <= # dnf list installed
+$ rpm -qi httpd => package httpd is not installed (query info works only for installed packages)
+$ rpm -ql => list the content (files)of the package.
+For downloaded .rpm files only (not yet installed packages) use rpm -qpi (query package info)
+$ rpm -qpi httpd-2.4.37-39.module_el8.4.0.rpm => info
+$ rpm -qpc httpd-2.4.37-39.module_el8.4.0.rpm => config
+$ rpm -qpd httpd-2.4.37-39.module_el8.4.0.rpm => documentation
+$ rpm -e nmap => remove (erase) nmap
+We can query a local file and find the package it belongs to:
+$ rpm -qf /etc/hosts => setup-2.12.2-6.el8.noarch AND after, query info the package
+$ rpm -qi setup-2.12.2-6.el8.noarch
+Important: "rpm -V setup" will verify the setup package.
+If we make a change to a file that come with that package, that file will be listed back:
+# rpm -qf /etc/passwd
+setup-2.12.2-6.el8.noarch
+# rpm -V setup-2.12.2-6.el8.noarch
+S.5....T.  c /etc/bashrc
+S.5....T.  c /etc/profile
+I deleted the modified (bashrc and profile) files and reinstall the package.
+Missing files are back, existing files are not overwriten (/etc/{passwd,shadow}, etc...
+# rpm -V setup
+.M....G..  g /var/log/lastlog
+================== Working with yum.mp4 ==================================
+# dnf deplist nmap => list dependencies
+# dnf list installed
+# dnf list available => all packages from repos, (excluded installed packages)
+# dnf list all => installed and not installed packages
+==================Configuring Software Repositories.mp4===================
+# yum repolist [enabled,disabled,all) => nothing in RH8
+Mount DVD: /mnt/myrepo  /dev/sr0
+# mount /dev/sr0  /mnt/myrepo/
+ls /mnt/myrepo/
+AppStream  EFI   extra_files.json  images    media.repo               RPM-GPG-KEY-redhat-release
+BaseOS     EULA  GPL               isolinux  RPM-GPG-KEY-redhat-beta  TRANS.TBL
+
+Creare the repo files:
+# cat /etc/yum.repos.d/{Apps.repo,Base.repo}
+[Apps]
+name=Apps
+baseurl=////mnt/myrepo/AppStream
+enabled=1
+gpgcheck=0
+
+[Base]
+name=Base
+baseurl=////mnt/myrepo/BaseOS
+enabled=1
+gpgcheck=0
+============================================================================
