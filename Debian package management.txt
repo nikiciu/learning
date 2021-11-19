@@ -1,0 +1,13 @@
+    -l, --list package-name-pattern...        List packages matching given pattern.
+
+    -s, --status package-name...
+        Report status of specified package.
+
+    -L, --listfiles package-name...
+        List files installed to your system from package-name.
+
+    -S, --search filename-search-pattern...
+        Search for a filename from installed packages.
+
+    -p, --print-avail package-name...
+        Display details about package-name, as found in /var/lib/dpkg/available. Users of APT-based frontends should use apt show package-name instead.
