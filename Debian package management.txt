@@ -1,3 +1,36 @@
+======== dpkg =============
+- Install, upgrade, remove .deb files BUt does not resove dependencies or locate the package.
+# dpkg --get-sellection		==> list installed
+# dpkg -l 'vim*'		==> list all packages available that starts with vim
+# dpkg -i <package.deb>		==> install the file from specified path
+# dpkg - r <package> 	==> remove the package. No path to file needed. Leave the configuration files untouched.
+# dpkg -P <package> 	==> Purge the package. Remove the application & configuration files.
+# dpkg -S /usr/bin/lp	==> which package lp belongs to.
+# dpkg -L cups-client	==> List all files that belog to a package
+Debian ususaly will configure a service during the install.Run dpkg-reconfigure to reconfigure the service.
+# dpkg-reconfigure	<package-name>
+
+NOTE: sudo run with a different PATH!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     -l, --list package-name-pattern...        List packages matching given pattern.
 
     -s, --status package-name...

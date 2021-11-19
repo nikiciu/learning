@@ -1,0 +1,78 @@
+1. Find all the files whose name is technology.txt in a current working directory.
+# find . -name technology.txt
+
+2. Find all the files under /home directory with name technology.txt.
+# find /home -name technology.txt
+
+3. Find Files Using Name and Ignoring Case
+# find /home -iname technology.txt
+
+4. Find Directories Using Name
+# find / -type d -name abcd
+
+5. Find all xyz files whose name is technology.xyz in a current working directory.
+# find . -type f -name technology.xyz
+
+6. Find all xyz files in directory
+# find . -type f -name "*.xyz"
+
+7. Find Files With 777 Permissions
+# find . -type f -perm 0777 -print
+
+8. Find Files Without 777 Permissions
+# find / -type f ! -perm 777
+
+9. Find Read Only Files
+# find / -perm /u=r
+
+10. Find Executable Files
+find / -perm /a=x
+
+11. Find all 777 permission files and use chmod command to set permissions to 644.
+# find / -type f -perm 0777 -print -exec chmod 644 {} \;
+
+12. Find all 777 permission directories and use chmod command to set permissions to 755.
+# find / -type d -perm 777 -print -exec chmod 755 {} \;
+
+13. To find a single file called tecmint.txt and remove it.
+# find . -type f -name "tecmint.txt" -exec rm -f {} \;
+
+14. To find and remove multiple files such as .mp3 or .txt, then use.
+# find . -type f -name "*.txt" -exec rm -f {} \;
+# find . -type f -name "*.mp3" -exec rm -f {} \;
+
+15. To find all empty files under certain path.
+# find /tmp -type f -empty
+
+16. To find all hidden files, use below command.
+# find /tmp -type f -name ".*"
+
+17. To find all files that belongs to user Tecmint under /home directory.
+# find /home -user tecmint
+
+18. To find all the files which are modified 50 days back.
+# find / -mtime 50
+
+19. To find all the files which are accessed 50 days back.
+# find / -atime 50
+
+20. To find all the files which are changed in last 1 hour.
+# find / -cmin -60
+
+21. To find all the files which are modified in last 1 hour.
+# find / -mmin -60
+
+22. To find all the files which are accessed in last 1 hour.
+# find / -amin -60
+
+23. To find all 50MB files, use.
+# find / -size 50M
+
+24. To find all the files which are greater than 50MB and less than 100MB.
+# find / -size +50M -size -100M
+
+25. To find all 100MB files and delete them using one single command.
+# find / -size +100M -exec rm -rf {} \;
+
+26. Find all .mp3 files with more than 10MB and delete them using one single command.
+# find / -type f -name *.mp3 -size +10M -exec rm {} \;
