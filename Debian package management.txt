@@ -1,16 +1,19 @@
 ======== dpkg =============
-- Install, upgrade, remove .deb files BUt does not resove dependencies or locate the package.
-# dpkg --get-sellection		==> list installed
-# dpkg -l 'vim*'		==> list all packages available that starts with vim
-# dpkg -i <package.deb>		==> install the file from specified path
-# dpkg - r <package> 	==> remove the package. No path to file needed. Leave the configuration files untouched.
+dpkg - Install, upgrade, remove .deb files BUT does not resove dependencies or locate the package.
+# dpkg --get-sellection		==> list installed packages
+# dpkg -i <package.deb>		==> install the file from path.
+# dpkg -r <package> 	==> remove the package. No path to file needed. Leave the configuration files untouched.
 # dpkg -P <package> 	==> Purge the package. Remove the application & configuration files.
-# dpkg -S /usr/bin/lp	==> which package lp belongs to.
-# dpkg -L cups-client	==> List all files that belog to a package
-Debian ususaly will configure a service during the install.Run dpkg-reconfigure to reconfigure the service.
+# dpkg -S /usr/bin/lp	==> which package command lp belongs to (Source of the file).
+# dpkg -s sshd 			==> Status of a package. Also list dependicies. Check whether you have installed a specific package.
+# dpkg -L cups-client	==> List all files that belog to a package. 
+# dpkg -l 'vim*'		==> list all installed packages available that starts with vim.
+==== Debian ususaly will configure a service during the install. Run dpkg-reconfigure to reconfigure the service.
 # dpkg-reconfigure	<package-name>
 
-NOTE: sudo run with a different PATH!
+ATTENTION:
+- sudo run with a different PATH!
+- dpkg does not remove dependencies. apt-get does remove dependencies.
 
 
 
@@ -26,15 +29,6 @@ NOTE: sudo run with a different PATH!
 
 
 
-
-
-
-
-
-    -l, --list package-name-pattern...        List packages matching given pattern.
-
-    -s, --status package-name...
-        Report status of specified package.
 
     -L, --listfiles package-name...
         List files installed to your system from package-name.
