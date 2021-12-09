@@ -1,6 +1,6 @@
-swap = move inactive application memory
-	 = total system memory 
-Can create a swap file, but not recomended. 
+Swap on linux
+
+swap = move inactive application memory to swap partition.
 To monitor swap activity:
 # vmstat ==> look for swap in (si) and swap out (so) fields
 # vmstat 1 10 ==> run each second for 10 times.
@@ -17,10 +17,26 @@ Summary commands:
 # cat /proc/meminfo
 # cat /proc/swaps
 # grep ctive /proc/meminfo
+# swapon --show
+# swapon --summary
 =========================================================
-Creating swap:
+
+Create a swap partition:
 # gdisk /dev/sdc ; create a swap 1.5GB, type 8200 for GPT. (for MBR is 82);
 Like normal partition, create the file system, Then activate the swap on that partition:
 # mkswap /dev/sdc1
 # swapon /dev/sdc1
+==========================================================
+Create a swap file (not recomended):
+Swap file are not shown in lsblk. Use:
+# swapon --show
+### fallocate -l 2G /swap ==> Nu merge swapon! Use dd.
+# dd if=/dev/zero of=/swap bs=1G count=2
+# mkswap /swap
+# chmod 600 /swap
+# swapon
+# swapon --show
+==========================================================
+
+make SWAP persistent
 
