@@ -1,0 +1,27 @@
+SS[root@localhost ~]# systemctl cat fstrim.service
+# /usr/lib/systemd/system/fstrim.service
+[Unit]
+Description=Discard unused blocks
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/fstrim -a
+[root@localhost ~]# systemctl cat fstrim.timer
+
+# /usr/lib/systemd/system/fstrim.timer
+[Unit]
+Description=Discard unused blocks once a week
+Documentation=man:fstrim
+[Timer]
+OnCalendar=weekly
+AccuracySec=1h
+Persistent=true
+[Install]
+WantedBy=multi-user.target
+
+$ systemctl status fstrim.timer
+$ sudo systemctl list-timers --all
+
+If fstrim is not active, enable it:
+# systemctl enable --now fstrim.timer
+
+
