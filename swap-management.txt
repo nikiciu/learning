@@ -1,0 +1,26 @@
+swap = move inactive application memory
+	 = total system memory 
+Can create a swap file, but not recomended. 
+To monitor swap activity:
+# vmstat ==> look for swap in (si) and swap out (so) fields
+# vmstat 1 10 ==> run each second for 10 times.
+# free -h (uman readable) or -m/g/k = mega,giga,kilo bytes
+# cat /proc/meminfo ==> to much info, use grep:
+# grep ctive /proc/meminfo
+
+Analize: use "free -mh" and "cat ctive /proc/meminfo".
+Inactive(anon): Anonymous memory that has not been used recently and can be swapped out.
+
+Summary commands:
+# vmstat 1 10
+# free -h
+# cat /proc/meminfo
+# cat /proc/swaps
+# grep ctive /proc/meminfo
+=========================================================
+Creating swap:
+# gdisk /dev/sdc ; create a swap 1.5GB, type 8200 for GPT. (for MBR is 82);
+Like normal partition, create the file system, Then activate the swap on that partition:
+# mkswap /dev/sdc1
+# swapon /dev/sdc1
+
