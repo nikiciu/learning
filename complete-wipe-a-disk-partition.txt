@@ -1,0 +1,20 @@
+Destroy sdb2 partition:
+
+# lsblk -f
+NAME   FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINT
+sdb
+├─sdb1 swap   1           598ffeb8-6aed-4d28-8c6b-2f849def9492                [SWAP]
+└─sdb2
+
+# gdisk /dev/sdb2
+Command (? for help): x
+?
+z       zap (destroy) GPT data structures and exit
+About to wipe out GPT on /dev/sdb2. Proceed? (Y/N): y
+Your option? (Y/N): y
+Blank out MBR? (Y/N): y
+
+# partprobe (OR if command cannot inform the kernel)
+# reboot
+
+DONE
