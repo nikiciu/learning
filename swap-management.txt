@@ -39,4 +39,7 @@ Swap file are not shown in lsblk. Use:
 ==========================================================
 
 make SWAP persistent
+vim /etc/fstab
+UUID=598ffeb8-6aed-4d28-8c6b-2f849def9492 none swap defaults 0 0
+none = do not specify a mount point for swap
 
