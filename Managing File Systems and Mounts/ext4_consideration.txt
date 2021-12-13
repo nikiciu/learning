@@ -1,0 +1,14 @@
+mkfs.ext4 format the partition using a limited ammount of inodes.
+Use -N option to specify the same number of inodes as number of blocks:
+# mkfs.ext4 /dev/sdb1
+mke2fs 1.46.2 (28-Feb-2021)
+---------------
+Creating filesystem with 661206 4k blocks and 165312 inodes
+-------------------------
+As we may see above, there are less inodes than blocks.
+The recomended way to format the ext4 filesystem:
+$ sudo mkfs.ext4 -N 661206 /dev/sdb1
+Creating filesystem with 661206 4k blocks and 661248 inodes
+
+
+
