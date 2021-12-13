@@ -19,6 +19,7 @@ Summary commands:
 # grep ctive /proc/meminfo
 # swapon --show
 # swapon --summary
+# df -T ==> many INFO !!
 =========================================================
 
 Create a swap partition:
