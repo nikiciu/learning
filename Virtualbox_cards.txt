@@ -1,0 +1,15 @@
+To see the list of registered NAT networks, use the following command:
+
+VBoxManage list natnetworks
+
+Internal networks:
+$ vboxmanage list intnets
+Name:        198.51.100
+Name:        203.0.113
+Name:        intnet
+If you do not specify a network name, the network card will be attached to the network intnet by default:
+
+VBoxManage modifyvm "VM name" --nic<x> intnet
+VBoxManage modifyvm "VM name" --intnet<x> "network name"xxxxxxxx
+																			
+vboxmanage startvm <name or UUID> --type gui/headless
