@@ -1,0 +1,10 @@
+# http server enable
+# http 192.168.0.0 255.255.255.0 outside
+# aaa authentication http console LOCAL
+
+Disable/Re-enable an ACL:
+# access-list acl_inside line 2 extended permit tcp any any eq domain inactive
+# access-list acl_inside line 2 extended permit tcp any any eq domain
+
+
+

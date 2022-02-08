@@ -6,7 +6,7 @@ dpkg - Install, upgrade, remove .deb files BUT does not resove dependencies or l
 # dpkg -P <package> 	==> Purge the package. Remove the application & configuration files.
 # dpkg -S /usr/bin/lp	==> which package command lp belongs to (Source of the file).
 # dpkg -s sshd 			==> Status of a package. Also list dependicies. Check whether you have installed a specific package.
-# dpkg -L cups-client	==> List all files that belog to a package. 
+# dpkg -L cups-client	==> List all files that belog to a package. <=> dpkg-query --listfiles apache2 
 # dpkg -l 'vim*'		==> list all installed packages available that starts with vim.
 ==== Debian ususaly will configure a service during the install. Run dpkg-reconfigure to reconfigure the service.
 # dpkg-reconfigure	<package-name>
@@ -14,21 +14,6 @@ dpkg - Install, upgrade, remove .deb files BUT does not resove dependencies or l
 ATTENTION:
 - sudo run with a different PATH!
 - dpkg does not remove dependencies. apt-get does remove dependencies.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     -L, --listfiles package-name...
         List files installed to your system from package-name.
@@ -38,3 +23,4 @@ ATTENTION:
 
     -p, --print-avail package-name...
         Display details about package-name, as found in /var/lib/dpkg/available. Users of APT-based frontends should use apt show package-name instead.
+		
