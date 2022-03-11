@@ -1,0 +1,3 @@
+# nmcli m
+
+# tail -f /var/log/syslog
