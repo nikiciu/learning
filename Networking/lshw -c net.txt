@@ -1,0 +1,22 @@
+lshw -c net
+
+
+root@ubuntu:~# lshw -c net
+  *-network:0               
+       description: Ethernet interface
+       product: 82545EM Gigabit Ethernet Controller (Copper)
+       vendor: Intel Corporation
+       physical id: 1
+       bus info: pci@0000:02:01.0
+       logical name: ens33
+       version: 01
+       serial: 00:0c:29:71:c7:b3
+       capacity: 1Gbit/s
+       width: 64 bits
+       clock: 66MHz
+       capabilities: pm pcix bus_master cap_list rom ethernet physical logical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=e1000 driverversion=5.13.0-35-generic latency=0 link=no mingnt=255 multicast=yes port=twisted pair
+       resources: irq:19 memory:fd5c0000-fd5dffff memory:fdff0000-fdffffff ioport:2000(size=64) memory:fd500000-fd50ffff
+  *-network:1
+
+
