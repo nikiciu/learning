@@ -1,0 +1,13 @@
+# openssl version -a
+Priv. key:
+ openssl -in tutorialspedia.key -pubout -out tutorialspedia_public.key
+Pub. key:
+openssl rsa -in tutorialspedia.key -pubout -out tutorialspedia_public.key
+CSR:
+openssl req -new -key tutorialspedia.key -out tutorialspedia.csr 
+Verify the CSR:
+openssl req -text -in tutorialspedia.csr -noout -verify 
+
+Slef-sign the certificate:
+openssl x509 -in tutorialspedia.csr -out tutorialspedia.crt -req -signkey tutorialspedia.key -days 365 
+
