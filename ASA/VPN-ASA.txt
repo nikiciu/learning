@@ -1,0 +1,33 @@
+ASA =================== P1 ============================
+1)
+crypto ikev2 policy 1
+ encryption aes-256
+ integrity sha
+ group 5
+ prf sha
+ lifetime seconds 86400
+crypto ikev2 enable outside
+__________________________________________________
+2)
+tunnel-group 24.17.23.12 type ipsec-l2l
+tunnel-group 24.17.23.12 ipsec-attributes
+ ikev2 remote-authentication pre-shared-key *****
+ ikev2 local-authentication pre-shared-key *****
+
+===================== P2 ==========================
+3)
+crypto ipsec ikev2 ipsec-proposal VPN-TRANSFORM
+ protocol esp encryption aes
+ protocol esp integrity sha-1
+
+4)
+access-list INST extended permit ip 192.168.101.0 255.255.255.0 192.168.102.0 255.255.255.0
+
+5)
+crypto map MAP1 1 match address INST
+crypto map MAP1 1 set peer 24.17.23.12
+crypto map MAP1 1 set ikev2 ipsec-proposal VPN-TRANSFORM
+
+6)
+crypto map MAP1 interface outside
+

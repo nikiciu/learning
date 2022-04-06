@@ -1,0 +1,39 @@
+IOS =================== P1 ==========================
+1)
+crypto ikev2 proposal PROP1
+ encryption aes-cbc-256
+ integrity sha1
+ group 5
+crypto ikev2 policy POL1
+ proposal PROP1
+___________________________________________________
+2) 
+crypto ikev2 profile PROFILE1
+ match identity remote address 12.1.2.1 255.255.255.255
+ authentication remote pre-share key cisco1
+ authentication local pre-share key cisco1
+
+========================= P2 =====================
+3) 
+crypto ipsec transform-set TRS1 esp-aes esp-sha-hmac
+ mode tunnel
+_____________________________________________________
+
+4) 
+ip access-list extended INST
+ permit ip 192.168.102.0 0.0.0.255 192.168.101.0 0.0.0.255
+
+5)
+crypto map MAP1 1 ipsec-isakmp
+ set peer 12.1.2.1
+ set transform-set TRS1
+ set ikev2-profile PROFILE1
+ match address INST
+ crypto map MAP1
+
+6)
+interface GigabitEthernet0/0
+  crypto map MAP1
+
+
+
