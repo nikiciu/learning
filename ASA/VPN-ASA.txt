@@ -31,3 +31,24 @@ crypto map MAP1 1 set ikev2 ipsec-proposal VPN-TRANSFORM
 6)
 crypto map MAP1 interface outside
 
+IKEv1
+crypto ikev1 enable outside
+crypto ikev1 policy 10
+ authentication pre-share
+ encryption aes
+ hash sha
+ group 5
+ lifetime 86400
+
+tunnel-group 200.0.0.2 type ipsec-l2l
+tunnel-group 200.0.0.2 ipsec-attributes
+ ikev1 pre-shared-key cisco1
+ 
+crypto ipsec ikev1 transform-set TR10 esp-aes esp-sha-hmac
+access-list INSIDE_172.16.10.0 extended permit ip 172.16.10.0 255.255.255.0 192.168.1.0 255.255.255.0
+
+
+ 
+
+
+
